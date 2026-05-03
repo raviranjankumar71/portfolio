@@ -1,11 +1,10 @@
-// Mobile menu toggle functionality
+// ========== MOBILE MENU TOGGLE ==========
 const menuIcon = document.getElementById('menuIcon');
 const navlist = document.getElementById('navlist');
 
 if(menuIcon) {
     menuIcon.addEventListener('click', () => {
         navlist.classList.toggle('active');
-        // change icon style (optional)
         const icon = menuIcon.querySelector('i');
         if(navlist.classList.contains('active')) {
             icon.classList.remove('bx-menu');
@@ -17,7 +16,7 @@ if(menuIcon) {
     });
 }
 
-// Close mobile menu when a nav link is clicked
+// ========== CLOSE MOBILE MENU WHEN NAV LINK CLICKED ==========
 const navLinks = document.querySelectorAll('.navlist a');
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -30,35 +29,14 @@ navLinks.forEach(link => {
     });
 });
 
-// Download CV simulation (smooth & interactive)
-const downloadBtn = document.getElementById('downloadBtn');
-if(downloadBtn) {
-    downloadBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        // Create dummy CV download (simulates resume)
-        const link = document.createElement('a');
-        link.href = '#'; 
-        link.download = 'Raviranjan_Kumar_Flutter_CV.pdf';
-        // Alert with nice feedback (since no actual file, show toast-like)
-        alert('📄 Demo: Your CV download would start here. In production, link actual PDF.');
-        
-        // Or you can trigger a fake behaviour
-        // For actual CV you can link a real resource. Provide a nice ui feedback
-        const btn = e.currentTarget;
-        btn.textContent = '✨ Request Sent';
-        setTimeout(() => {
-            btn.textContent = 'Download CV';
-        }, 1500);
-    });
-}
-
-// Smooth scrolling for all anchor links + active highlight
+// ========== ACTIVE SECTION HIGHLIGHT ON SCROLL ==========
 const sections = document.querySelectorAll('section');
 const navItems = document.querySelectorAll('.navlist a');
 
 function updateActiveSection() {
     let current = '';
-    const scrollPos = window.scrollY + 150;
+    const scrollPos = window.scrollY + 120; // Offset for header
+    
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
@@ -66,6 +44,7 @@ function updateActiveSection() {
             current = section.getAttribute('id');
         }
     });
+    
     navItems.forEach(link => {
         link.classList.remove('active');
         const href = link.getAttribute('href').substring(1);
@@ -78,15 +57,16 @@ function updateActiveSection() {
 window.addEventListener('scroll', updateActiveSection);
 window.addEventListener('load', updateActiveSection);
 
-// Smooth scroll with offset for fixed header
+// ========== SMOOTH SCROLLING WITH OFFSET ==========
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href').substring(1);
         if(!targetId) return;
+        
         const targetElement = document.getElementById(targetId);
         if(targetElement) {
-            const offset = 90;  // header height offset
+            const offset = 80; // header height offset
             const elementPosition = targetElement.offsetTop - offset;
             window.scrollTo({
                 top: elementPosition,
@@ -96,21 +76,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// handle placeholder for missing images (ensure project images look consistent)
-const imagesToCheck = document.querySelectorAll('.col img');
-imagesToCheck.forEach(img => {
-    img.addEventListener('error', function() {
-        if(!this.dataset.fallbackSet) {
-            this.dataset.fallbackSet = 'true';
-            // already handled via inline onerror but we can also force by style, keep placeholder text
-            this.style.objectFit = 'cover';
-            this.style.backgroundColor = '#0f2f4f';
-        }
-    });
-});
-
-
-// responsive header shrink on scroll (optional little effect)
+// ========== HEADER SHRINK ON SCROLL ==========
 window.addEventListener('scroll', () => {
     const header = document.querySelector('header');
     if(window.scrollY > 60) {
@@ -121,4 +87,51 @@ window.addEventListener('scroll', () => {
         header.style.background = 'rgba(255, 255, 255, 0.96)';
         header.style.padding = '14px 28px';
     }
+});
+
+// ========== CONTACT FORM HANDLING ==========
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+
+if(contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const submitBtn = contactForm.querySelector('button');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Sending...';
+        submitBtn.disabled = true;
+        
+        // Simulate sending (replace with actual API call)
+        setTimeout(() => {
+            formStatus.innerHTML = '<span style="color: #64ffda;">✓ Message sent successfully! I\'ll get back to you soon.</span>';
+            contactForm.reset();
+            
+            setTimeout(() => {
+                formStatus.innerHTML = '';
+            }, 5000);
+            
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }, 1500);
+    });
+}
+
+// ========== HANDLE MISSING IMAGES (PROJECT IMAGES) ==========
+const imagesToCheck = document.querySelectorAll('.col img, .edu-img-wrapper img, .about-img img, .home-img img');
+imagesToCheck.forEach(img => {
+    img.addEventListener('error', function() {
+        if(!this.dataset.fallbackSet) {
+            this.dataset.fallbackSet = 'true';
+            this.style.objectFit = 'cover';
+            this.style.backgroundColor = '#0f2f4f';
+            // Add a default text/icon for missing images
+            if(this.closest('.col')) {
+                this.style.padding = '40px 0';
+                this.style.textAlign = 'center';
+                this.style.fontSize = '3rem';
+                this.alt = '📱 Project Image';
+            }
+        }
+    });
 });

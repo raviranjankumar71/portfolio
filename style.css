@@ -379,6 +379,47 @@ h2:after {
     margin-top: 24px;
     line-height: 1.6;
 }
+/* Download Resume Button in About Section */
+.about-resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    margin-top: 25px;
+    background: linear-gradient(135deg, #ff5e3a, #ff8c5a);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 94, 58, 0.3);
+    border: none;
+    cursor: pointer;
+}
+
+.about-resume-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 94, 58, 0.4);
+    gap: 15px;
+}
+
+.about-resume-btn i {
+    font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-resume-btn {
+        padding: 10px 24px;
+        font-size: 0.85rem;
+        margin-top: 20px;
+    }
+    
+    .about-resume-btn i {
+        font-size: 1rem;
+    }
+}
 /* ---------- EDUCATION SECTION ---------- */
 .education {
     padding: 80px 8%;

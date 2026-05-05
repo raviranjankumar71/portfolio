@@ -280,6 +280,18 @@ h2:after {
     margin: 1rem 0 1.5rem;
     font-size: 1.05rem;
 }
+/* Typing Animation */
+.typing-text {
+    color: #ff5e3a;
+    border-right: 3px solid #ff5e3a;
+    padding-right: 5px;
+    animation: blink 0.5s step-end infinite;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+
+
 
 .social {
     display: flex;

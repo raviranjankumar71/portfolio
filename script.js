@@ -15,6 +15,45 @@ if(menuIcon) {
         }
     });
 }
+// Typing Animation - Flutter Developer & Mobile App Developer
+const roles = ["Flutter Developer", "Mobile App Developer"];
+let roleIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typingElement = document.querySelector('.typing-text');
+
+function typeEffect() {
+    if (!typingElement) return;
+    
+    const currentRole = roles[roleIndex];
+    
+    if (isDeleting) {
+        typingElement.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        typingElement.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+    }
+    
+    if (!isDeleting && charIndex === currentRole.length) {
+        isDeleting = true;
+        setTimeout(typeEffect, 2000);
+        return;
+    }
+    
+    if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        setTimeout(typeEffect, 500);
+        return;
+    }
+    
+    setTimeout(typeEffect, isDeleting ? 80 : 150);
+}
+
+if (typingElement) {
+    typeEffect();
+}
 
 // ========== CLOSE MOBILE MENU WHEN NAV LINK CLICKED ==========
 const navLinks = document.querySelectorAll('.navlist a');

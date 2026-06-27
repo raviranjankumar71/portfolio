@@ -1,363 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Raviranjan Kumar is a Flutter Developer specializing in Firebase, REST APIs, clean architecture, and production-ready mobile apps.">
+    <meta name="theme-color" content="#07111f">
     <title>Raviranjan Kumar | Flutter Developer Portfolio</title>
-    
-    <!-- Boxicons CDN -->
+    <link rel="preconnect" href="https://unpkg.com">
     <link href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
-    
-    <!-- External CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <!-- ===== SKIP LINK ===== -->
+    <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- HEADER with responsive menu -->
-<header>
-    <div class="logo">
-        <h2>Port<span>folio</span></h2>
-    </div>
-
-    <ul class="navlist" id="navlist">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#portfolio">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-
-    <div class="menu-icon" id="menuIcon">
-        <i class='bx bx-menu'></i>
-    </div>
-</header>
-
-<!-- HOME SECTION - Redesigned -->
-<section class="home" id="home">
-    <div class="home-text">
-        <h3>Hi, I'm</h3>
-        <h1>Raviranjan Kumar</h1>
-        <h5><span class="typing-text"></span></h5>
-        <p>
-            I build scalable mobile applications using Flutter and Firebase,
-            focused on clean UI and real-world solutions. 1+ years of hands-on 
-            experience in delivery apps, KYC systems & location-based services.
-        </p>
-        <div class="btn-group">
-            <a href="#contact" class="hire-btn">Hire Me</a>
-            <a href="#contact" class="talk-btn">Let's Talk</a>
-        </div>
-        <div class="social">
-            <a href="https://linkedin.com/in/raviranjankumar7" target="_blank" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
-            <a href="https://github.com/raviranjankumar7" target="_blank" aria-label="GitHub"><i class='bx bxl-github'></i></a>
-        </div>
-    </div>
-    <div class="home-img">
-        <img src="Images/home.png" alt="Raviranjan profile" onerror="this.src='https://placehold.co/400x400/112240/64ffda?text=RK+Dev'; this.style.objectFit='cover'">
-    </div>
-</section>
-
-<!-- ABOUT SECTION -->
-<section id="about" class="about">
-    <div class="about-img">
-        <img src="Images/about.png" alt="about" onerror="this.src='https://placehold.co/300x300/0a192f/64ffda?text=Flutter+Dev'; this.style.objectFit='cover'">
-    </div>
-    <div class="about-text">
-        <h2>About Me</h2>
-        <p>
-            I'm Raviranjan Kumar, a passionate Flutter developer focused on building scalable and user-friendly mobile applications.
-            <br><br>
-            I have hands-on experience in developing real-world apps including delivery systems, KYC verification workflows, and location-based tracking features.
-            <br><br>
-            I specialize in Flutter, Firebase, REST APIs, and state management (Riverpod, BLoC), with a strong focus on clean code and smooth user experience.
-            <br><br>
-            I am currently looking for opportunities to contribute to impactful projects and grow as a Mobile App Developer.
-        </p>
-        <!-- Download Resume Button -->
-        <a href="Raviranjan_Kumar_Resume.pdf" download class="about-resume-btn">
-            <i class='bx bx-download'></i> Download Resume
+    <!-- ===== HEADER ===== -->
+    <header class="site-header" id="siteHeader">
+        <a class="logo" href="#home" aria-label="Raviranjan Kumar home">
+            <span>Raviranjan</span>
+            <strong>Flutter Dev</strong>
         </a>
-    </div>
-</section>
-<!-- EXPERIENCE SECTION -->
-<section class="experience" id="experience">
-    <h2>Work Experience</h2>
-    <div class="experience-container">
-        
-        <!-- Experience 1 - Current Full-time Role -->
-        <div class="experience-card">
-            <div class="experience-year">
-                <span>Sep 2025 - Present · 9 mos</span>
-            </div>
-            <div class="experience-content">
-                <div class="exp-icon">
-                    <i class='bx bxs-briefcase'></i>
+
+        <nav class="site-nav" aria-label="Primary navigation">
+            <ul class="navlist" id="navlist">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#portfolio">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <a class="header-cta" href="Raviranjan_Kumar_Resume.pdf" download>
+            <i class='bx bx-download' aria-hidden="true"></i>Resume
+        </a>
+
+        <button class="menu-icon" id="menuIcon" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navlist">
+            <i class='bx bx-menu' aria-hidden="true"></i>
+        </button>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main id="main">
+
+        <!-- ===== HERO SECTION ===== -->
+        <section class="hero section" id="home" aria-labelledby="hero-title">
+            <div class="hero-bg" aria-hidden="true"></div>
+
+            <div class="hero-content reveal">
+                <p class="eyebrow"> Open to Work • Flutter Developer</p>
+
+                <h1 id="hero-title">
+                    <span class="hero-name">Raviranjan Kumar</span>
+                </h1>
+
+                <p class="animated-role">
+                    <span class="typing-text" aria-live="polite"></span>
+                </p>
+
+                <p class="hero-copy">
+                    Flutter Developer with <strong>1+ years of experience</strong> creating
+    high-performance mobile applications. Specialized in Flutter, Firebase,
+    REST APIs, Clean Architecture, and delivering exceptional user experiences.
+                </p>
+
+                <div class="hero-actions" aria-label="Primary actions">
+                    <a class="btn btn-primary" href="Raviranjan_Kumar_Resume.pdf" download>
+                        <i class='bx bx-download' aria-hidden="true"></i>Download Resume
+                    </a>
+                    <a class="btn btn-secondary" href="#contact">
+                        <i class='bx bx-envelope' aria-hidden="true"></i>Contact Me
+                    </a>
+                    <a class="icon-btn" href="https://github.com/raviranjankumar7" target="_blank" rel="noopener" aria-label="GitHub profile">
+                        <i class='bx bxl-github' aria-hidden="true"></i>
+                    </a>
+                    <a class="icon-btn" href="https://linkedin.com/in/raviranjankumar7" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+                        <i class='bx bxl-linkedin' aria-hidden="true"></i>
+                    </a>
                 </div>
-                <div class="exp-details">
-                    <h3>Flutter Developer</h3>
-                    <h4>Full-time</h4>
-                    <p class="exp-location"><i class='bx bx-buildings'></i> On-site · India</p>
-                    <ul class="exp-responsibilities">
-                        <li>Developing cross-platform mobile applications using Flutter & Dart</li>
-                        <li>Implementing responsive UI/UX designs and smooth animations</li>
-                        <li>Integrating REST APIs and Firebase services for backend functionality</li>
-                        <li>Collaborating with design and product teams to deliver high-quality features</li>
-                        <li>Optimizing app performance and fixing bugs for better user experience</li>
-                    </ul>
-                    <div class="tech-stack">
-                        <span>Flutter</span>
-                        <span>Dart</span>
-                        <span>Firebase</span>
-                        <span>REST API</span>
-                        <span>Git</span>
+
+                <dl class="hero-stats" aria-label="Professional highlights">
+                    <div>
+                        <dt>3+</dt>
+                        <dd>Years Experience</dd>
+                    </div>
+                    <div>
+                        <dt>3+</dt>
+                        <dd>Apps Published</dd>
+                    </div>
+                    <div>
+                        <dt>Flutter</dt>
+                        <dd>Developer</dd>
+                    </div>
+                    <div>
+                        <dt>Firebase</dt>
+                        <dd>Specialist</dd>
+                    </div>
+                </dl>
+            </div>
+
+            <div class="hero-visual reveal">
+                <div class="profile-card">
+                    <img src="Images/home.png" alt="Portrait of Raviranjan Kumar" width="420" height="420" fetchpriority="high">
+                    <div class="profile-badge">
+                        <i class='bx bxl-flutter' aria-hidden="true"></i>
+                        <span>Flutter + Firebase</span>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Experience 2 - Internship -->
-        <div class="experience-card">
-            <div class="experience-year">
-                <span>Sep 2025 - Nov 2025 · 3 mos</span>
+        <!-- ===== ABOUT SECTION ===== -->
+        <section class="about section" id="about" aria-labelledby="about-title">
+            <div class="section-heading reveal">
+                <p class="eyebrow">About</p>
+                <h2 id="about-title">Production-minded mobile development with clean execution.</h2>
             </div>
-            <div class="experience-content">
-                <div class="exp-icon">
-                    <i class='bx bxs-graduation'></i>
+
+            <div class="about-grid">
+                <div class="about-media reveal">
+                    <img src="Images/about.png" alt="Raviranjan working as a Flutter Developer" loading="lazy" width="360" height="420">
                 </div>
-                <div class="exp-details">
-                    <h3>Junior Flutter Developer</h3>
-                    <h4>Internship</h4>
-                    <p class="exp-location"><i class='bx bx-buildings'></i> On-site · India</p>
-                    <ul class="exp-responsibilities">
-                        <li>Assisted in building cross-platform mobile applications</li>
-                        <li>Learned state management techniques and Firebase integration</li>
-                        <li>Created reusable widgets and improved code efficiency</li>
-                        <li>Gained hands-on experience with Flutter, Dart, and 4+ technical skills</li>
-                        <li>Participated in team meetings and code reviews</li>
-                    </ul>
-                    <div class="tech-stack">
-                        <span>Flutter</span>
-                        <span>Dart</span>
+
+                <div class="about-copy reveal">
+                    <p>
+                        I am a Flutter Developer who builds real-world mobile applications with a strong eye for usability,
+                        code quality, and dependable delivery. My work spans delivery platforms, KYC verification workflows,
+                        live location tracking, authentication, and Firebase-backed product features.
+                    </p>
+                    <p>
+                        I am comfortable translating product requirements into clean Flutter interfaces, integrating REST APIs,
+                        structuring apps with MVVM and clean architecture principles, and using Firebase services such as
+                        Authentication, Cloud Firestore, Storage, and notifications.
+                    </p>
+                    <p>
+                        I enjoy solving practical mobile problems: making flows faster, reducing user friction, improving state
+                        management, and keeping the codebase readable for the next developer who touches it.
+                    </p>
+
+                    <div class="about-points" aria-label="Core strengths">
+                        <span>Clean Architecture</span>
+                        <span>MVVM</span>
                         <span>Firebase</span>
-                        <span>Provider</span>
-                        <span>REST API</span>
+                        <span>REST APIs</span>
+                        <span>Mobile UI/UX</span>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-    </div>
-</section>
-
-<!-- EDUCATION SECTION -->
-<section class="education" id="education">
-    <h2>My Education</h2>
-    <div class="education-container">
-        
-        <!-- MCA -->
-        <div class="education-card">
-            <div class="education-year">
-                <span>2022 - 2024</span>
+        <!-- ===== SKILLS SECTION ===== -->
+        <section class="skills section" id="skills" aria-labelledby="skills-title">
+            <div class="section-heading centered reveal">
+                <p class="eyebrow">Skills</p>
+                <h2 id="skills-title">A focused stack for high-quality Flutter products.</h2>
             </div>
-            <div class="education-content">
-                <div class="edu-img-wrapper">
-                    <img src="Images/mmdu.png" alt="MCA" onerror="this.src='https://placehold.co/80x80/ff5e3a/white?text=MCA'">
-                </div>
-                <div class="edu-details">
+
+            <div class="skills-grid">
+                <article class="skill-card reveal">
+                    <i class='bx bx-mobile-alt' aria-hidden="true"></i>
+                    <h3>Mobile Development</h3>
+                    <ul>
+                        <li>Flutter</li>
+                        <li>Dart</li>
+                        <li>Android</li>
+                        <li>Responsive UI</li>
+                    </ul>
+                </article>
+
+                <article class="skill-card reveal">
+                    <i class='bx bx-server' aria-hidden="true"></i>
+                    <h3>Backend & Cloud</h3>
+                    <ul>
+                        <li>Firebase</li>
+                        <li>REST APIs</li>
+                        <li>Authentication</li>
+                        <li>Cloud Firestore</li>
+                        <li>Storage</li>
+                    </ul>
+                </article>
+
+                <article class="skill-card reveal">
+                    <i class='bx bx-layer' aria-hidden="true"></i>
+                    <h3>Architecture</h3>
+                    <ul>
+                        <li>Provider</li>
+                        <!-- <li>Riverpod</li> -->
+                        <!-- <li>BLoC</li> -->
+                        <li>MVVM</li>
+                        <li>Clean Architecture</li>
+                    </ul>
+                </article>
+
+                <article class="skill-card reveal">
+                    <i class='bx bx-wrench' aria-hidden="true"></i>
+                    <h3>Tools</h3>
+                    <ul>
+                        <li>Git</li>
+                        <li>GitHub</li>
+                        <li>Android Studio</li>
+                        <li>VS Code</li>
+                        <li>Postman</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===== PROJECTS SECTION ===== -->
+        <section class="portfolio section" id="portfolio" aria-labelledby="projects-title">
+            <div class="section-heading centered reveal">
+                <p class="eyebrow">Projects</p>
+                <h2 id="projects-title">Selected mobile app work built around real product needs.</h2>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1: Delivery App -->
+                <article class="project-card reveal">
+                    <img src="Images/project1.png" alt="Delivery app screenshot" loading="lazy" width="560" height="340">
+
+                    <div class="project-body">
+                        <div class="project-topline">
+                            <h3>Delivery App</h3>
+                            <span>Flutter App</span>
+                        </div>
+
+                        <p>Multi-role delivery workflow for users, riders, and admins with real-time order visibility and location-aware operations.</p>
+
+                        <h4>Key Features</h4>
+                        <ul>
+                            <li>Live order tracking with Google Maps</li>
+                            <li>Push notifications and rider updates</li>
+                            <li>User, rider, and admin flows</li>
+                        </ul>
+
+                        <h4>Challenge Solved</h4>
+                        <p>Designed a clear status flow so orders can move across multiple roles without confusing users or support teams.</p>
+
+                        <div class="tech-stack">
+                            <span>Flutter</span>
+                            <span>Dart</span>
+                            <span>Firebase</span>
+                            <span>Google Maps</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 2: KYC System -->
+                <article class="project-card reveal">
+                    <img src="Images/project2.png" alt="KYC verification app screenshot" loading="lazy" width="560" height="340">
+
+                    <div class="project-body">
+                        <div class="project-topline">
+                            <h3>KYC System</h3>
+                            <span>Secure Workflow</span>
+                        </div>
+
+                        <p>Document verification system with secure uploads, review states, and admin-friendly approval handling.</p>
+
+                        <h4>Key Features</h4>
+                        <ul>
+                            <li>Document upload and preview</li>
+                            <li>Approval and rejection workflow</li>
+                            <li>Cloud storage and Firestore records</li>
+                        </ul>
+
+                        <h4>Challenge Solved</h4>
+                        <p>Kept sensitive verification steps structured and traceable while maintaining a simple experience for end users.</p>
+
+                        <div class="tech-stack">
+                            <span>Flutter</span>
+                            <span>Firebase Auth</span>
+                            <span>Firestore</span>
+                            <span>Storage</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3: Location Tracking -->
+                <article class="project-card reveal">
+                    <img src="Images/project.png" alt="Location tracking app screenshot" loading="lazy" width="560" height="340">
+
+                    <div class="project-body">
+                        <div class="project-topline">
+                            <h3>Location Tracking</h3>
+                            <span>Realtime</span>
+                        </div>
+
+                        <p>Live geolocation experience with map updates, movement visibility, and efficient tracking behavior.</p>
+
+                        <h4>Key Features</h4>
+                        <ul>
+                            <li>Realtime location updates</li>
+                            <li>Map-based tracking views</li>
+                            <li>Geofencing-ready architecture</li>
+                        </ul>
+
+                        <h4>Challenge Solved</h4>
+                        <p>Balanced responsive tracking with battery-conscious update patterns for a smoother mobile experience.</p>
+
+                        <div class="tech-stack">
+                            <span>Flutter</span>
+                            <span>REST APIs</span>
+                            <span>WebSocket</span>
+                            <span>Maps</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===== EXPERIENCE SECTION ===== -->
+        <section class="experience section" id="experience" aria-labelledby="experience-title">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Experience</p>
+                <h2 id="experience-title">Hands-on Flutter experience across product delivery.</h2>
+            </div>
+
+            <div class="timeline">
+                <!-- Experience 1 -->
+                <article class="timeline-item reveal">
+                    <div class="timeline-date">Sep 2025 - Present</div>
+                    <div class="timeline-card">
+                        <h3>Flutter Developer</h3>
+                        <p class="company">Full-time | On-site, India</p>
+                        <ul>
+                            <li>Develop cross-platform mobile features using Flutter, Dart, Firebase, and REST APIs.</li>
+                            <li>Build responsive interfaces, reusable widgets, and smooth product interactions.</li>
+                            <li>Collaborate with product and design teams to ship reliable app functionality.</li>
+                            <li>Improve performance, resolve bugs, and maintain clean implementation patterns.</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span>Flutter</span>
+                            <span>Dart</span>
+                            <span>Firebase</span>
+                            <span>REST API</span>
+                            <span>Git</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Experience 2 -->
+                <article class="timeline-item reveal">
+                    <div class="timeline-date">Sep 2025 - Nov 2025</div>
+                    <div class="timeline-card">
+                        <h3>Junior Flutter Developer</h3>
+                        <p class="company">Internship | On-site, India</p>
+                        <ul>
+                            <li>Built Flutter screens, reusable widgets, and assisted with app feature delivery.</li>
+                            <li>Learned state management, Firebase integration, and API-driven mobile workflows.</li>
+                            <li>Participated in team discussions, code reviews, and quality improvements.</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span>Flutter</span>
+                            <span>Dart</span>
+                            <span>Firebase</span>
+                            <span>Provider</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===== EDUCATION SECTION ===== -->
+        <section class="education section" id="education" aria-labelledby="education-title">
+            <div class="section-heading centered reveal">
+                <p class="eyebrow">Education</p>
+                <h2 id="education-title">Academic foundation in computer applications.</h2>
+            </div>
+
+            <div class="education-grid">
+                <article class="education-card reveal">
+                    <img src="Images/mmdu.png" alt="" loading="lazy" width="72" height="72">
+                    <span>2022 - 2024</span>
                     <h3>Master of Computer Applications</h3>
-                    <h4>MCA</h4>
-                    <p class="college-name">📚 Maharishi Markandeshwar University (MMDU)</p>
-                    <p class="education-description">
-                        Completed Master's in Computer Applications with specialization in Mobile App Development.
-                        <strong>Secured 78% marks</strong> up to 2nd semester.
-                    </p>
-                    <div class="skills-tags">
-                        <span>Advanced Java</span>
-                        <span>Flutter</span>
-                        <span>Cloud Computing</span>
-                        <span>AI/ML</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <p>Maharishi Markandeshwar University (MMDU)</p>
+                    <strong>78% marks</strong>
+                </article>
 
-        <!-- BCA -->
-        <div class="education-card">
-            <div class="education-year">
-                <span>2019 - 2022</span>
-            </div>
-            <div class="education-content">
-                <div class="edu-img-wrapper">
-                    <img src="Images/mmdu.png" alt="BCA" onerror="this.src='https://placehold.co/80x80/64ffda/white?text=BCA'">
-                </div>
-                <div class="edu-details">
+                <article class="education-card reveal">
+                    <img src="Images/mmdu.png" alt="" loading="lazy" width="72" height="72">
+                    <span>2019 - 2022</span>
                     <h3>Bachelor of Computer Applications</h3>
-                    <h4>BCA</h4>
-                    <p class="college-name">📚 Maharishi Markandeshwar University (MMDU)</p>
-                    <p class="education-description">
-                        Completed Bachelor's in Computer Applications with focus on programming fundamentals.
-                        <strong>Achieved 80% marks.</strong>
-                    </p>
-                    <div class="skills-tags">
-                        <span>C/C++</span>
-                        <span>Java</span>
-                        <span>Web Dev</span>
-                        <span>DBMS</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <p>Maharishi Markandeshwar University (MMDU)</p>
+                    <strong>80% marks</strong>
+                </article>
 
-        <!-- Intermediate -->
-        <div class="education-card">
-            <div class="education-year">
-                <span>2017 - 2019</span>
-            </div>
-            <div class="education-content">
-                <div class="edu-img-wrapper">
-                    <img src="Images/bseb.png" alt="School" onerror="this.src='https://placehold.co/80x80/ff8c5a/white?text=12th'">
-                </div>
-                <div class="edu-details">
+                <article class="education-card reveal">
+                    <img src="Images/bseb.png" alt="" loading="lazy" width="72" height="72">
+                    <span>2017 - 2019</span>
                     <h3>Intermediate (10+2)</h3>
-                    <h4>Science with Computer Science</h4>
-                    <p class="college-name">🏫 Bihar State Education Board (BSEB)</p>
-                    <p class="education-description">
-                        Completed Intermediate education with focus on Mathematics, Physics, and Computer Science.
-                        <strong>Secured 60% marks.</strong>
-                    </p>
-                    <div class="skills-tags">
-                        <span>Mathematics</span>
-                        <span>Physics</span>
-                        <span>Computer Science</span>
+                    <p>Bihar State Education Board (BSEB)</p>
+                    <strong>Science with Computer Science</strong>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===== ACHIEVEMENTS SECTION ===== -->
+        <section class="achievements section" aria-labelledby="achievements-title">
+            <div class="section-heading centered reveal">
+                <p class="eyebrow">Highlights</p>
+                <h2 id="achievements-title">Signals recruiters can scan quickly.</h2>
+            </div>
+
+            <div class="achievement-grid">
+                <article class="achievement-card reveal">
+                    <strong>3+</strong>
+                    <span>Years Experience</span>
+                </article>
+
+                <article class="achievement-card reveal">
+                    <strong>3+</strong>
+                    <span>Apps Published</span>
+                </article>
+
+                <article class="achievement-card reveal">
+                    <strong>Firebase</strong>
+                    <span>Authentication, Firestore, Storage</span>
+                </article>
+
+                <article class="achievement-card reveal">
+                    <strong>Flutter</strong>
+                    <span>Specialist</span>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT SECTION ===== -->
+        <section class="contact section" id="contact" aria-labelledby="contact-title">
+            <div class="contact-shell reveal">
+                <div class="contact-intro">
+                    <p class="eyebrow">Contact</p>
+                    <h2 id="contact-title">Let's build reliable Flutter apps together.</h2>
+                    <p>Available for Full-Time Flutter Developer Opportunities. Reach out for roles involving Flutter, Firebase, REST APIs, location features, or production mobile UI.</p>
+
+                    <div class="contact-links">
+                        <a href="mailto:raviranjankumar0917@gmail.com">
+                            <i class='bx bx-envelope' aria-hidden="true"></i>Email
+                        </a>
+                        <a href="https://github.com/raviranjankumar7" target="_blank" rel="noopener">
+                            <i class='bx bxl-github' aria-hidden="true"></i>GitHub
+                        </a>
+                        <a href="https://linkedin.com/in/raviranjankumar7" target="_blank" rel="noopener">
+                            <i class='bx bxl-linkedin' aria-hidden="true"></i>LinkedIn
+                        </a>
+                        <a href="Raviranjan_Kumar_Resume.pdf" download>
+                            <i class='bx bx-download' aria-hidden="true"></i>Resume
+                        </a>
                     </div>
                 </div>
+
+                <form class="contact-form" id="contactForm">
+                    <label>
+                        <span>Your Name</span>
+                        <input type="text" name="name" autocomplete="name" required>
+                    </label>
+
+                    <label>
+                        <span>Your Email</span>
+                        <input type="email" name="email" autocomplete="email" required>
+                    </label>
+
+                    <label>
+                        <span>Subject</span>
+                        <input type="text" name="subject" value="Flutter Developer Opportunity">
+                    </label>
+
+                    <label>
+                        <span>Message</span>
+                        <textarea name="message" rows="5" required></textarea>
+                    </label>
+
+                    <button class="btn btn-primary" type="submit">
+                        <i class='bx bx-send' aria-hidden="true"></i>Send Message
+                    </button>
+
+                    <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+                </form>
             </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <a class="footer-logo" href="#home">Raviranjan Kumar</a>
+        <p>© 2026 Raviranjan Kumar. Flutter Developer focused on clean, production-ready mobile apps.</p>
+
+        <div class="footer-social" aria-label="Social links">
+            <a href="https://github.com/raviranjankumar7" target="_blank" rel="noopener" aria-label="GitHub">
+                <i class='bx bxl-github' aria-hidden="true"></i>
+            </a>
+            <a href="https://linkedin.com/in/raviranjankumar7" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <i class='bx bxl-linkedin' aria-hidden="true"></i>
+            </a>
+            <a href="mailto:raviranjankumar0917@gmail.com" aria-label="Email">
+                <i class='bx bx-envelope' aria-hidden="true"></i>
+            </a>
+            <a href="#home" aria-label="Back to top">
+                <i class='bx bx-up-arrow-alt' aria-hidden="true"></i>
+            </a>
         </div>
+    </footer>
 
-    </div>
-</section>
-
-<!-- PROJECTS SECTION -->
-<section class="portfolio" id="portfolio">
-    <h2>My Projects</h2>
-    <div class="portfolio-content">
-        <div class="col">
-            <img src="Images/project1.png" alt="Delivery App" onerror="this.src='https://placehold.co/300x170/112240/64ffda?text=🚚+Delivery+App'; this.onerror=null;">
-            <h3>🚚 Delivery App</h3>
-            <p>Multi-role system (user, rider, admin) with real-time order tracking, push notifications, and live location using Google Maps & Firebase.</p>
-        </div>
-        <div class="col">
-            <img src="Images/project2.png" alt="KYC System" onerror="this.src='https://placehold.co/300x170/112240/64ffda?text=🪪+KYC+System'; this.onerror=null;">
-            <h3>🪪 KYC System</h3>
-            <p>Document upload & approval workflow with image picker, OCR verification, admin dashboard, and secure cloud storage (Firestore).</p>
-        </div>
-        <div class="col">
-            <img src="Images/project.png" alt="Location Tracking" onerror="this.src='https://placehold.co/300x170/112240/64ffda?text=📍+Live+Tracking'; this.onerror=null;">
-            <h3>📍 Location Tracking</h3>
-            <p>Live geolocation tracking using Flutter + WebSocket, real-time mapping, geofencing alerts, and battery-efficient updates.</p>
-        </div>
-    </div>
-</section>
-
-<!-- CONTACT SECTION -->
-<!-- CONTACT SECTION -->
-<section class="contact" id="contact">
-    <h2>Contact Me</h2>
-    <div class="contact-container">
-
-        <div class="contact-info">
-
-            <!-- Email -->
-            <div class="info-card">
-                <div class="info-icon">
-                    <i class='bx bx-envelope'></i>
-                </div>
-                <div class="info-details">
-                    <h3>Email Me</h3>
-                    <p>raviranjankumar0917@gmail.com</p>
-                    <a href="mailto:raviranjankumar0917@gmail.com" class="info-link">
-                        Send Email →
-                    </a>
-                </div>
-            </div>
-
-            <!-- Phone -->
-            <div class="info-card">
-                <div class="info-icon">
-                    <i class='bx bx-phone-call'></i>
-                </div>
-                <div class="info-details">
-                    <h3>Call Me</h3>
-                    <p>+91 98765 43210</p>
-                    <a href="tel:+919876543210" class="info-link">
-                        Call Now →
-                    </a>
-                </div>
-            </div>
-
-            <!-- Location -->
-            <div class="info-card">
-                <div class="info-icon">
-                    <i class='bx bx-map'></i>
-                </div>
-                <div class="info-details">
-                    <h3>Location</h3>
-                    <p>Kharar, Punjab, India</p>
-                </div>
-            </div>
-
-            <!-- GitHub -->
-            <div class="info-card">
-                <div class="info-icon">
-                    <i class='bx bxl-github'></i>
-                </div>
-                <div class="info-details">
-                    <h3>GitHub</h3>
-                    <p>github.com/raviranjankumar7</p>
-                    <a href="https://github.com/raviranjankumar7" target="_blank" class="info-link">
-                        View Profile →
-                    </a>
-                </div>
-            </div>
-
-            <!-- LinkedIn -->
-            <div class="info-card">
-                <div class="info-icon">
-                    <i class='bx bxl-linkedin'></i>
-                </div>
-                <div class="info-details">
-                    <h3>LinkedIn</h3>
-                    <p>linkedin.com/in/raviranjankumar7</p>
-                    <a href="https://linkedin.com/in/raviranjankumar7" target="_blank" class="info-link">
-                        Connect →
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Contact Form -->
-        <form class="contact-form" id="contactForm">
-            <h3>Send me a message</h3>
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <input type="text" placeholder="Subject">
-            <textarea placeholder="Your Message" rows="5" required></textarea>
-            <button type="submit">
-                <i class='bx bx-send'></i> Send Message
-            </button>
-            <p id="formStatus" class="form-status"></p>
-        </form>
-
-    </div>
-</section>
-
-<div class="footer-note">
-    <p>© 2025 Raviranjan Kumar — Flutter Developer | Built with & responsive design</p>
-</div>
-
-<!-- External JavaScript -->
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>

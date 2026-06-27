@@ -1,176 +1,253 @@
-// ========== MOBILE MENU TOGGLE ==========
-const menuIcon = document.getElementById('menuIcon');
-const navlist = document.getElementById('navlist');
-
-if(menuIcon) {
-    menuIcon.addEventListener('click', () => {
-        navlist.classList.toggle('active');
-        const icon = menuIcon.querySelector('i');
-        if(navlist.classList.contains('active')) {
-            icon.classList.remove('bx-menu');
-            icon.classList.add('bx-x');
-        } else {
-            icon.classList.remove('bx-x');
-            icon.classList.add('bx-menu');
-        }
-    });
-}
-// Typing Animation - Flutter Developer & Mobile App Developer
-const roles = ["Flutter Developer", "Mobile App Developer"];
-let roleIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-const typingElement = document.querySelector('.typing-text');
-
-function typeEffect() {
-    if (!typingElement) return;
-    
-    const currentRole = roles[roleIndex];
-    
-    if (isDeleting) {
-        typingElement.textContent = currentRole.substring(0, charIndex - 1);
-        charIndex--;
-    } else {
-        typingElement.textContent = currentRole.substring(0, charIndex + 1);
-        charIndex++;
-    }
-    
-    if (!isDeleting && charIndex === currentRole.length) {
-        isDeleting = true;
-        setTimeout(typeEffect, 2000);
-        return;
-    }
-    
-    if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        roleIndex = (roleIndex + 1) % roles.length;
-        setTimeout(typeEffect, 500);
-        return;
-    }
-    
-    setTimeout(typeEffect, isDeleting ? 80 : 150);
-}
-
-if (typingElement) {
-    typeEffect();
-}
-
-// ========== CLOSE MOBILE MENU WHEN NAV LINK CLICKED ==========
+/* ============================================================
+   DOM REFERENCES
+   ============================================================ */
+const menuButton = document.getElementById('menuIcon');
+const navList = document.getElementById('navlist');
+const header = document.getElementById('siteHeader');
 const navLinks = document.querySelectorAll('.navlist a');
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navlist.classList.remove('active');
-        const icon = menuIcon?.querySelector('i');
-        if(icon) {
-            icon.classList.remove('bx-x');
-            icon.classList.add('bx-menu');
-        }
-    });
-});
-
-// ========== ACTIVE SECTION HIGHLIGHT ON SCROLL ==========
-const sections = document.querySelectorAll('section');
-const navItems = document.querySelectorAll('.navlist a');
-
-function updateActiveSection() {
-    let current = '';
-    const scrollPos = window.scrollY + 120; // Offset for header
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if(scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    navItems.forEach(link => {
-        link.classList.remove('active');
-        const href = link.getAttribute('href').substring(1);
-        if(href === current) {
-            link.classList.add('active');
-        }
-    });
-}
-
-window.addEventListener('scroll', updateActiveSection);
-window.addEventListener('load', updateActiveSection);
-
-// ========== SMOOTH SCROLLING WITH OFFSET ==========
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        if(!targetId) return;
-        
-        const targetElement = document.getElementById(targetId);
-        if(targetElement) {
-            const offset = 80; // header height offset
-            const elementPosition = targetElement.offsetTop - offset;
-            window.scrollTo({
-                top: elementPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// ========== HEADER SHRINK ON SCROLL ==========
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if(window.scrollY > 60) {
-        header.style.background = 'rgba(255, 255, 255, 0.98)';
-        header.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
-        header.style.padding = '10px 28px';
-    } else {
-        header.style.background = 'rgba(255, 255, 255, 0.96)';
-        header.style.padding = '14px 28px';
-    }
-});
-
-// ========== CONTACT FORM HANDLING ==========
+const sections = document.querySelectorAll('main section[id]');
+const typingElement = document.querySelector('.typing-text');
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 
-if(contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const submitBtn = contactForm.querySelector('button');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Sending...';
-        submitBtn.disabled = true;
-        
-        // Simulate sending (replace with actual API call)
-        setTimeout(() => {
-            formStatus.innerHTML = '<span style="color: #64ffda;">✓ Message sent successfully! I\'ll get back to you soon.</span>';
-            contactForm.reset();
-            
-            setTimeout(() => {
-                formStatus.innerHTML = '';
-            }, 5000);
-            
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        }, 1500);
-    });
+
+/* ============================================================
+   TYPING ANIMATION
+   ============================================================ */
+const roles = [
+    'Flutter Developer',
+   
+    'Mobile App Developer',
+    'Clean Architecture Enthusiast'
+];
+
+let roleIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+/**
+ * Typewriter effect for the hero role text
+ * Cycles through roles array with typing and deleting animation
+ */
+function typeRole() {
+    if (!typingElement) return;
+
+    const role = roles[roleIndex];
+    typingElement.textContent = role.slice(0, charIndex);
+
+    // Typing forward
+    if (!deleting && charIndex < role.length) {
+        charIndex++;
+        setTimeout(typeRole, 85);
+        return;
+    }
+
+    // Pause at full word
+    if (!deleting && charIndex === role.length) {
+        deleting = true;
+        setTimeout(typeRole, 1400);
+        return;
+    }
+
+    // Deleting backward
+    if (deleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(typeRole, 45);
+        return;
+    }
+
+    // Move to next role
+    deleting = false;
+    roleIndex = (roleIndex + 1) % roles.length;
+    setTimeout(typeRole, 360);
 }
 
-// ========== HANDLE MISSING IMAGES (PROJECT IMAGES) ==========
-const imagesToCheck = document.querySelectorAll('.col img, .edu-img-wrapper img, .about-img img, .home-img img');
-imagesToCheck.forEach(img => {
-    img.addEventListener('error', function() {
-        if(!this.dataset.fallbackSet) {
-            this.dataset.fallbackSet = 'true';
-            this.style.objectFit = 'cover';
-            this.style.backgroundColor = '#0f2f4f';
-            // Add a default text/icon for missing images
-            if(this.closest('.col')) {
-                this.style.padding = '40px 0';
-                this.style.textAlign = 'center';
-                this.style.fontSize = '3rem';
-                this.alt = '📱 Project Image';
-            }
-        }
+// Start the typing animation
+typeRole();
+
+
+/* ============================================================
+   MOBILE MENU TOGGLE
+   ============================================================ */
+/**
+ * Toggle mobile menu open/closed state
+ * @param {boolean} open - Whether the menu should be open
+ */
+function setMenuOpen(open) {
+    if (!menuButton || !navList) return;
+
+    navList.classList.toggle('active', open);
+    menuButton.setAttribute('aria-expanded', String(open));
+
+    const icon = menuButton.querySelector('i');
+    icon.classList.toggle('bx-menu', !open);
+    icon.classList.toggle('bx-x', open);
+}
+
+// Toggle menu on button click
+menuButton?.addEventListener('click', () => {
+    setMenuOpen(!navList.classList.contains('active'));
+});
+
+// Close menu when a nav link is clicked
+navLinks.forEach(link => {
+    link.addEventListener('click', () => setMenuOpen(false));
+});
+
+
+/* ============================================================
+   SMOOTH SCROLL WITH OFFSET
+   ============================================================ */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', event => {
+        const id = anchor.getAttribute('href');
+        if (!id || id === '#') return;
+
+        const target = document.querySelector(id);
+        if (!target) return;
+
+        event.preventDefault();
+
+        // Calculate offset for fixed header
+        const offset = header ? header.offsetHeight + 24 : 96;
+
+        window.scrollTo({
+            top: target.getBoundingClientRect().top + window.scrollY - offset,
+            behavior: 'smooth'
+        });
     });
 });
+
+
+/* ============================================================
+   ACTIVE NAV HIGHLIGHT ON SCROLL
+   ============================================================ */
+const sectionObserver = new IntersectionObserver(
+    (entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+            });
+        });
+    }, {
+        rootMargin: '-35% 0px -55% 0px',
+        threshold: 0
+    }
+);
+
+sections.forEach(section => sectionObserver.observe(section));
+
+
+/* ============================================================
+   REVEAL ANIMATIONS ON SCROLL
+   ============================================================ */
+const revealObserver = new IntersectionObserver(
+    (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.16
+    }
+);
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+
+/* ============================================================
+   HEADER SCROLL EFFECT
+   ============================================================ */
+/**
+ * Add/remove scrolled class on header based on scroll position
+ */
+function updateHeader() {
+    header?.classList.toggle('scrolled', window.scrollY > 20);
+}
+
+window.addEventListener('scroll', updateHeader, { passive: true });
+updateHeader();
+
+
+/* ============================================================
+   CONTACT FORM HANDLING
+   ============================================================ */
+/**
+ * Handle contact form submission
+ * Opens mail client with pre-filled message
+ */
+contactForm?.addEventListener('submit', event => {
+    event.preventDefault();
+
+    const data = new FormData(contactForm);
+    const subject = encodeURIComponent(data.get('subject') || 'Flutter Developer Opportunity');
+    const body = encodeURIComponent(
+        'Hi Raviranjan,\n\n' +
+        data.get('message') +
+        '\n\nFrom: ' + data.get('name') +
+        '\nEmail: ' + data.get('email')
+    );
+
+    formStatus.textContent = 'Opening your email app with the message ready to send.';
+
+    // Open default email client with pre-filled fields
+    window.location.href = 'mailto:raviranjankumar0917@gmail.com?subject=' + subject + '&body=' + body;
+
+    // Reset form after submission
+    contactForm.reset();
+});
+
+
+/* ============================================================
+   KEYBOARD NAVIGATION (Accessibility)
+   ============================================================ */
+// Close mobile menu on Escape key press
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && navList?.classList.contains('active')) {
+        setMenuOpen(false);
+        menuButton?.focus();
+    }
+});
+
+// Trap focus within mobile menu when open
+menuButton?.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        setMenuOpen(!navList.classList.contains('active'));
+    }
+});
+
+
+/* ============================================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================================ */
+// Debounce scroll events for better performance
+let scrollTimeout;
+window.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+        // Any heavy scroll operations can go here
+    }, 100);
+}, { passive: true });
+
+
+/* ============================================================
+   CONSOLE WELCOME (Developer Friendly)
+   ============================================================ */
+console.log(
+    '%c🚀 Raviranjan Kumar Portfolio',
+    'font-size: 20px; font-weight: bold; color: #29d3c2;'
+);
+console.log(
+    '%cBuilt with ❤️ using vanilla JS',
+    'font-size: 12px; color: #a7b4c7;'
+);
+console.log(
+    '%c📧 raviranjankumar0917@gmail.com',
+    'font-size: 12px; color: #ffb454;'
+);
